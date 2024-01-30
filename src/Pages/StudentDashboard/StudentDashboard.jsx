@@ -1,14 +1,20 @@
-// StudentDashboard.js
+// importing react
 import React, { useEffect } from "react";
+// importing react-redux
 import { useDispatch, useSelector } from "react-redux";
+// importing actions
 import { fetchEnrolledCourses } from "../../actions/courseAction";
+// importing components
 import { CourseCard } from "../../components/CourseCard/CourseCard";
 import { SkeletonLoaders } from "../../components/SkeletonLoaders/SkeletonLoaders";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { Footer } from "../../components/Footer/Footer";
+// importing toastify
 import { toast, Bounce } from "react-toastify";
+// importing react-router-dom
 import { useNavigate } from "react-router-dom";
 
+// creating and exporting StudentDashboard component
 const StudentDashboard = () => {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.courses.loading);

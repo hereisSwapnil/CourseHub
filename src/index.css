@@ -1,5 +1,7 @@
+/* Importing font */
 @import url("https://fonts.googleapis.com/css2?family=Quattrocento+Sans:wght@700&display=swap");
 
+/* Tailwind configurations */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

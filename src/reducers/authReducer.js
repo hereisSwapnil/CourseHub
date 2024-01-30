@@ -2,6 +2,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 const storedUser = JSON.parse(localStorage.getItem("user"));
 
+// creating a slice for authentication
 const authSlice = createSlice({
   name: "auth",
   initialState: {
@@ -22,5 +23,6 @@ const authSlice = createSlice({
   },
 });
 
+// exporting the reducer and actions
 export const { login, logout } = authSlice.actions;
 export default authSlice.reducer;

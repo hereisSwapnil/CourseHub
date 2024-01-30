@@ -1,6 +1,7 @@
 // reducers/courseReducer.js
 import { createSlice } from "@reduxjs/toolkit";
 
+// creating a slice for courses
 const courseSlice = createSlice({
   name: "courses",
   initialState: {
@@ -8,7 +9,7 @@ const courseSlice = createSlice({
     selectedCourse: null,
     loading: false,
     error: null,
-    isUserLiked: false, // Added state for checking if user liked a course
+    isUserLiked: false,
   },
   reducers: {
     setLoading: (state) => {
@@ -50,6 +51,7 @@ const courseSlice = createSlice({
   },
 });
 
+// exporting the reducer and actions
 export const {
   fetchCoursesStart,
   fetchCoursesSuccess,
@@ -61,5 +63,4 @@ export const {
   setSuccess,
   setError,
 } = courseSlice.actions;
-
 export default courseSlice.reducer;
