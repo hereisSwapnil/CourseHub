@@ -1,4 +1,4 @@
-# CourseHub
+![image](https://github.com/hereisSwapnil/CourseHub/assets/85278243/1a77ef1f-0982-4e9d-8715-218c77971ea0)# CourseHub
 
 React Developer Hiring Assignment: In this project, the user/student will be able to explore various courses, enroll in them, and like them.
 
@@ -13,8 +13,11 @@ React Developer Hiring Assignment: In this project, the user/student will be abl
 - Users can mark a course as completed.
 
 ## Demo
+[Watch Demo video](https://youtu.be/LgBIZDbcjx4)
 
-Insert gif or link to demo
+[![Watch Video Demo](https://i.postimg.cc/k4yNGjyH/Screenshot-from-2024-01-30-23-01-24.png)](https://youtu.be/LgBIZDbcjx4)
+
+
 
 ## Environment Variables
 
@@ -50,7 +53,12 @@ Start the server
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![image](https://github.com/hereisSwapnil/CourseHub/assets/85278243/bd67bf16-1b85-40e2-ba62-2cd269637862)
+![image](https://github.com/hereisSwapnil/CourseHub/assets/85278243/b4c6ab7a-55a4-4229-bdde-5501dfe781ca)
+![image](https://github.com/hereisSwapnil/CourseHub/assets/85278243/e960c985-6b56-4444-997b-00e60be5f4dd)
+![image](https://github.com/hereisSwapnil/CourseHub/assets/85278243/448f503c-d84a-46b6-836d-8a35b5c153d7)
+
+
 
 ## 🔗 Links
 
