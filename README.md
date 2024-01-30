@@ -1,4 +1,4 @@
-![image](https://github.com/hereisSwapnil/CourseHub/assets/85278243/1a77ef1f-0982-4e9d-8715-218c77971ea0)# CourseHub
+# CourseHub
 
 React Developer Hiring Assignment: In this project, the user/student will be able to explore various courses, enroll in them, and like them.
 
