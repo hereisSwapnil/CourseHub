@@ -17,7 +17,7 @@ const CourseListing = () => {
   const searchTerm = queryParams.get("search");
   console.log(searchTerm);
   useEffect(() => {
-    console.log(searchTerm);
+    // console.log(searchTerm);
     dispatch(fetchCourses(searchTerm));
   }, [dispatch, searchTerm]);
 

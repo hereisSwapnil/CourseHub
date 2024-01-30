@@ -123,31 +123,31 @@ export const unenrollFromCourse = (courseId, user) => async (dispatch) => {
 
 // getting a particular user's enrolled courses by using userId
 export const getEnrolledCourses = async (userId, dispatch) => {
-  try {
-    const coursesRef = collection(firestore, "courses");
-    const coursesSnapshot = await getDocs(coursesRef);
-    const enrolledCoursesDetails = [];
-    coursesSnapshot.forEach((courseDoc) => {
-      const courseData = courseDoc.data();
-      courseData.students.forEach((student) => {
-        if (student.id === userId) {
-          console.log(courseData);
-          enrolledCoursesDetails.push({
-            id: courseData.id,
-            name: courseData.name,
-            instructor: courseData.instructor,
-            description: courseData.description,
-            thumbnail: courseData.thumbnail,
-            progress: student.progress,
-          });
-        }
-      });
+  // try {
+  const coursesRef = collection(firestore, "courses");
+  const coursesSnapshot = await getDocs(coursesRef);
+  const enrolledCoursesDetails = [];
+  coursesSnapshot.forEach((courseDoc) => {
+    const courseData = courseDoc.data();
+    courseData.students.forEach((student) => {
+      if (student.id === userId) {
+        console.log(courseData);
+        enrolledCoursesDetails.push({
+          id: courseData.id,
+          name: courseData.name,
+          instructor: courseData.instructor,
+          description: courseData.description,
+          thumbnail: courseData.thumbnail,
+          progress: student.progress,
+        });
+      }
     });
-    return enrolledCoursesDetails;
-  } catch (error) {
-    console.error("Error fetching enrolled courses:", error);
-    throw error;
-  }
+  });
+  return enrolledCoursesDetails;
+  // } catch (error) {
+  //   console.error("Error fetching enrolled courses:", error);
+  //   throw error;
+  // }
 };
 
 // fetching a particular user's enrolled courses by using userId
@@ -175,7 +175,7 @@ export const markAsComplete = (userId, courseId) => async (dispatch) => {
       const courseData = courseDoc.data();
       const updatedStudents = courseData.students.map((student) => {
         if (student.id === userId) {
-          console.log(courseData);
+          // console.log(courseData);
           return {
             ...student,
             progress: 100,
