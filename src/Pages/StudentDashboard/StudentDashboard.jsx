@@ -6,7 +6,8 @@ import { CourseCard } from "../../components/CourseCard/CourseCard";
 import { SkeletonLoaders } from "../../components/SkeletonLoaders/SkeletonLoaders";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { Footer } from "../../components/Footer/Footer";
-import { setLoading } from "../../reducers/courseReducer";
+import { toast, Bounce } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const StudentDashboard = () => {
   const dispatch = useDispatch();
@@ -14,10 +15,24 @@ const StudentDashboard = () => {
   const error = useSelector((state) => state.courses.error);
   const courses = useSelector((state) => state.courses.courses);
   const user = useSelector((state) => state.auth.user);
+  const navigate = useNavigate();
 
   const user_ = JSON.parse(localStorage.getItem("user"));
   if (!user_) {
-    window.location.href = "/";
+    toast.warning("Please login first!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+      theme: "dark",
+      transition: Bounce,
+      onOpen: () => {
+        navigate("/");
+      },
+    });
   }
 
   useEffect(() => {

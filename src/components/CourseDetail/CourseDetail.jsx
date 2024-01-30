@@ -9,6 +9,7 @@ import {
   unenrollFromCourse,
   markAsComplete,
 } from "../../actions/courseAction";
+import { toast, Bounce } from "react-toastify";
 
 export const CourseDetail = () => {
   const { courseId } = useParams();
@@ -29,6 +30,17 @@ export const CourseDetail = () => {
     const userId = currentUser.uid;
 
     await dispatch(markAsComplete(userId, courseId));
+    toast.success("Course marked as complete", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+      theme: "dark",
+      transition: Bounce,
+    });
     navigate(`/dashboard/${currentUser.uid}`);
   };
   useEffect(() => {
@@ -37,6 +49,17 @@ export const CourseDetail = () => {
         dispatch(fetchSingleCourseStart());
         await dispatch(fetchSingleCourse(courseId));
       } catch (error) {
+        toast.error("Something went wrong", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: false,
+          draggable: false,
+          progress: undefined,
+          theme: "dark",
+          transition: Bounce,
+        });
         console.error("Error fetching course details:", error);
       }
     };
@@ -65,6 +88,17 @@ export const CourseDetail = () => {
             })
           );
           setIsUserEnrolled(false);
+          toast.success("You have been unenrolled from the course", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: false,
+            draggable: false,
+            progress: undefined,
+            theme: "dark",
+            transition: Bounce,
+          });
         } else {
           await dispatch(
             enrollInCourse(courseId, {
@@ -74,9 +108,31 @@ export const CourseDetail = () => {
             })
           );
           setIsUserEnrolled(true);
+          toast.success("You have been enrolled in the course", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: false,
+            draggable: false,
+            progress: undefined,
+            theme: "dark",
+            transition: Bounce,
+          });
           navigate(`/dashboard/${currentUser.uid}`);
         }
       } catch (error) {
+        toast.error("Something went wrong", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: false,
+          draggable: false,
+          progress: undefined,
+          theme: "dark",
+          transition: Bounce,
+        });
         console.error("Error handling enrollment:", error);
       } finally {
         setEnrollmentLoading(false); // Set loading to false when the action is complete
@@ -89,7 +145,7 @@ export const CourseDetail = () => {
   return (
     <>
       <section className="py-6 sm:py-12 dark:bg-gray-800 dark:text-gray-100 min-h-[100vh]">
-        <div className="container p-6 mx-auto space-y-8 flex gap-10">
+        <div className="container p-6 mx-auto space-y-8 gap-10 flex flex-col lg:flex-row">
           {!imageLoaded && !course && loading && (
             <div className="m-auto w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
           )}

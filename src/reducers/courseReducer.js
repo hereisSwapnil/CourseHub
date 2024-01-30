@@ -8,6 +8,7 @@ const courseSlice = createSlice({
     selectedCourse: null,
     loading: false,
     error: null,
+    isUserLiked: false, // Added state for checking if user liked a course
   },
   reducers: {
     setLoading: (state) => {

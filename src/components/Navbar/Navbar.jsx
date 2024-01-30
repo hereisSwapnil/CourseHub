@@ -3,11 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { auth, googleAuthProvider } from "../../firebase/firebase";
 import { signInWithPopup } from "firebase/auth";
 import { logout, login } from "../../reducers/authReducer";
+import { toast, Bounce } from "react-toastify";
 
 export const Navbar = ({ home, studentDashboard }) => {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  const [searchInput, setSearchInput] = useState(""); // Add this line
+  const [searchInput, setSearchInput] = useState("");
 
   const user = useSelector((state) => state.auth.user);
 
@@ -20,6 +21,17 @@ export const Navbar = ({ home, studentDashboard }) => {
         photoURL: user.photoURL,
         uid: user.uid,
       };
+      toast.success("User successfully logged in!", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
       dispatch(login(user_));
     } catch (err) {
       alert(err.message);
@@ -27,6 +39,17 @@ export const Navbar = ({ home, studentDashboard }) => {
   };
 
   const handleLogout = () => {
+    toast.success("User successfully logged out!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+      theme: "dark",
+      transition: Bounce,
+    });
     dispatch(logout());
   };
 
