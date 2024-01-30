@@ -3,7 +3,7 @@ import LikeButton from "../LikeButton/LikeButton";
 
 export const CourseCard = ({ course, studentDashboard }) => {
   const user = JSON.parse(localStorage.getItem("user"));
-  const userId = user.id || null;
+  console.log(user);
   return (
     <>
       <article key={course.id} className="flex flex-col dark:bg-gray-900">
@@ -35,8 +35,8 @@ export const CourseCard = ({ course, studentDashboard }) => {
           </h3>
           <h3 className="flex-1 py-2 text-md leading">{course.description}</h3>
           <div className="flex flex-wrap justify-between pt-3 space-x-2 text-xs dark:text-gray-400">
-            {userId && userId ? (
-              <LikeButton courseId={course.id} userId={userId} />
+            {user && user ? (
+              <LikeButton courseId={course.id} userId={user.uid} />
             ) : (
               <LikeButton />
             )}
