@@ -3,7 +3,7 @@ import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getFirestore, addDoc, collection } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: import.meta.env.FIREBASE_API_KEY,
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: "coursehub-9a761.firebaseapp.com",
   projectId: "coursehub-9a761",
   storageBucket: "coursehub-9a761.appspot.com",
