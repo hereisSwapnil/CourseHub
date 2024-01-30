@@ -65,7 +65,7 @@ export const Navbar = ({ home, studentDashboard }) => {
 
   return (
     <>
-      <header className="p-4 dark:bg-gray-800 dark:text-gray-100">
+      <header className="p-4 dark:bg-gray-800 flex-col flex justify-center align-middle text-center dark:text-gray-100">
         <div className="container flex justify-between h-16 mx-auto">
           <div className="flex justify-center align-middle text-center">
             <a
@@ -111,12 +111,13 @@ export const Navbar = ({ home, studentDashboard }) => {
                 )
               )}
             </ul>
+            {/* First search input visible on larger screens */}
             <input
-              className="px-8 ml-5 relative py-3 h-12 border-2 border-gray-300 font-semibold rounded dark:bg-gray-100 dark:text-gray-800"
+              className="px-8 ml-5 relative py-3 h-12 border-2 border-gray-300 font-semibold rounded dark:bg-gray-100 dark:text-gray-800 hidden lg:block"
               type="text"
               placeholder="Search courses"
               value={searchInput}
-              onChange={(e) => setSearchInput(e.target.value)} // Add this line
+              onChange={(e) => setSearchInput(e.target.value)}
               onKeyPress={(e) => {
                 if (e.key === "Enter") {
                   const searchTerm = e.target.value;
@@ -144,6 +145,7 @@ export const Navbar = ({ home, studentDashboard }) => {
               </button>
             )}
           </div>
+          {/* Button for toggling menu on small screens */}
           <button className="p-4 lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -161,6 +163,23 @@ export const Navbar = ({ home, studentDashboard }) => {
             </svg>
           </button>
         </div>
+        {/* Second search input visible on small screens */}
+        <input
+          className="px-8 ml-5 relative py-3 w-[40vw] h-12 border-2 border-gray-300 font-semibold rounded dark:bg-gray-100 dark:text-gray-800 block lg:hidden"
+          type="text"
+          style={{ margin: "auto" }}
+          placeholder="Search courses"
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
+          onKeyPress={(e) => {
+            if (e.key === "Enter") {
+              const searchTerm = e.target.value;
+              window.location.href = `?search=${encodeURIComponent(
+                searchTerm
+              )}`;
+            }
+          }}
+        />
       </header>
     </>
   );
