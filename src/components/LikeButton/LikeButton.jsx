@@ -10,8 +10,9 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { firestore } from "../../firebase/firebase";
+import { toast, Bounce } from "react-toastify";
 
-const LikeButton = ({ courseId, userId }) => {
+const LikeButton = ({ courseId = null, userId = null }) => {
   const dispatch = useDispatch();
   const [isUserLiked, setIsUserLiked] = useState(false);
 
@@ -39,6 +40,21 @@ const LikeButton = ({ courseId, userId }) => {
 
   const likeCourse = async () => {
     try {
+      // shows warning if user is not logged in
+      if (!userId || !courseId) {
+        toast.warning("Please login first!", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: false,
+          draggable: false,
+          progress: undefined,
+          theme: "dark",
+          transition: Bounce,
+        });
+        return;
+      }
       // Update Firestore data
       const courseRef = collection(firestore, "courses");
       const q = query(courseRef, where("id", "==", courseId));
@@ -70,6 +86,21 @@ const LikeButton = ({ courseId, userId }) => {
 
   const unlikeCourse = async () => {
     try {
+      // shows warning if user is not logged in
+      if (!userId || !courseId) {
+        toast.warning("Please login first!", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: false,
+          draggable: false,
+          progress: undefined,
+          theme: "dark",
+          transition: Bounce,
+        });
+        return;
+      }
       // Update Firestore data
       const courseRef = collection(firestore, "courses");
       const q = query(courseRef, where("id", "==", courseId));
@@ -102,6 +133,9 @@ const LikeButton = ({ courseId, userId }) => {
   };
 
   useEffect(() => {
+    if (!courseId || !userId) {
+      return;
+    }
     checkUserLiked(courseId, userId);
   }, [dispatch, courseId, userId]);
 
