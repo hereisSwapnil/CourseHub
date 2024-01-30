@@ -156,6 +156,7 @@ export const CourseDetail = () => {
                 src={course.thumbnail}
                 alt=""
                 onLoad={() => setImageLoaded(true)}
+                className="w-[40vw]"
               />
               {!imageLoaded && (
                 <div className="m-auto w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
